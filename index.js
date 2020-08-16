@@ -18,6 +18,7 @@ const getFiles = async patterns => {
 const run = async () => {
   try {    
     const patterns = core.getInput('files') || '*.html';
+    core.info("hey " + patterns)
 
     const files = await getFiles(patterns.split(','));
 
