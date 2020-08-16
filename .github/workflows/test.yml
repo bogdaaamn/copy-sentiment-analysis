@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: bogdaaamn/copy-sentiment-analysis@v0.0.3
+    - uses: bogdaaamn/copy-sentiment-analysis@v0.0.4
       with:
         files: '*.html'
 

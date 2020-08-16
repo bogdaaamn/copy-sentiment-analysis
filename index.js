@@ -21,7 +21,7 @@ const run = async () => {
   try {    
     const patterns = core.getInput('files') || '*.html';
     core.info("hey " + patterns)
-    // exec.exec('ls')
+    exec.exec('ls')
 
     const files = await getFiles(patterns.split(','));
 
