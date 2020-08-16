@@ -4,7 +4,7 @@ inputs:
   files:  # glob pattern for files
     description: 'Glob pattern for files to be checked.'
     required: true
-    default: '["*.html"]'
+    default: '*.js'
 runs:
   using: 'node12'
   main: 'dist/index.js'
