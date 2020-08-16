@@ -1,6 +1,6 @@
 {
   "name": "copy-sentiment-analysis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JavaScript Action Template",
   "main": "index.js",
   "scripts": {
