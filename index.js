@@ -17,13 +17,11 @@ const getFiles = async patterns => {
 // most @actions toolkit packages have async methods
 const run = async () => {
   try {    
-    const patterns = await core.getInput('files').split(',') || ['*.js'];
-    console.log(core.getInput('files'))
-    // const patterns = ["*.js"];
+    const patterns = core.getInput('files') || '*.html';
 
-    const files = await getFiles(patterns);
+    const files = await getFiles(patterns.split(','));
 
-    core.debug(files);
+    core.info(files);
   } catch (e) {
     core.setFailed(e.message);
   }
