@@ -1,13 +1,9 @@
-name: 'Wait'
+name: 'Content Sentiment Analysis'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  token:  # id of input
+    description: 'Access token used to fetch the repository. The token allows the action to run authenticated Git commands.'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
 runs:
   using: 'node12'
   main: 'dist/index.js'

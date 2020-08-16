@@ -1,6 +1,6 @@
 {
-  "name": "javascript-action",
-  "version": "1.0.0",
+  "name": "copy-sentiment-analysis",
+  "version": "0.0.1",
   "description": "JavaScript Action Template",
   "main": "index.js",
   "scripts": {
@@ -11,21 +11,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/BogDAAAMN/copy-sentiment-analysis.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
     "JavaScript"
   ],
-  "author": "",
+  "author": "Bogdan Covrig",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/BogDAAAMN/copy-sentiment-analysis/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/BogDAAAMN/copy-sentiment-analysis#readme",
   "dependencies": {
-    "@actions/core": "^1.1.1"
+    "@actions/core": "^1.1.1",
+    "@actions/github": "^4.0.0"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.3",
