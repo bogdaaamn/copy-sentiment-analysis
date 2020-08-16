@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const glob = require('@actions/glob');
-const exec = require('@actions/exec');
 
 
 const getFiles = async patterns => {
@@ -21,7 +20,6 @@ const run = async () => {
   try {    
     const patterns = core.getInput('files') || '*.html';
     core.info("hey " + patterns)
-    exec.exec('ls')
 
     const files = await getFiles(patterns.split(','));
 
