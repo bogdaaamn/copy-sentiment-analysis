@@ -1,9 +1,10 @@
 name: 'Content Sentiment Analysis'
 description: 'Wait a designated number of milliseconds'
 inputs:
-  token:  # id of input
-    description: 'Access token used to fetch the repository. The token allows the action to run authenticated Git commands.'
+  files:  # glob pattern for files
+    description: 'Glob pattern for files to be checked.'
     required: true
+    default: '["*.js"]'
 runs:
   using: 'node12'
   main: 'dist/index.js'

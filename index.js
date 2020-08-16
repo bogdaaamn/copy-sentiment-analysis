@@ -1,19 +1,31 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
+const glob = require('@actions/glob');
 
-const token = core.getInput('gh_token');
+const getFiles = async patterns => {
+  const globber = await glob.create(patterns.join('\n'));
+  const files = await globber.glob();
 
-const octo = new github.GitHub(token);
-const repo = github.context.repo;
+  if (files.length > 0) {
+    return files;
+  } else {
+    throw new Error('No files matching the pattern found. :(');
+  }
+
+  // return files.length > 0 ? files : throw new Error('BAD_ROUTE');
+};
 
 // most @actions toolkit packages have async methods
-async function run() {
+const run = async () => {
   try {    
-    const heads = await octo.git.listRefs({ ...repo, namespace: 'heads/' });
-    core.info(heads);
-  } catch (error) {
-    core.setFailed(error.message);
+    const patterns = core.getInput('files');
+    // const patterns = ["*.js"];
+
+    const files = await getFiles(patterns);
+
+    core.debug(files);
+  } catch (e) {
+    core.setFailed(e.message);
   }
-}
+};
 
 run();
