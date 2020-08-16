@@ -17,8 +17,8 @@ const getFiles = async patterns => {
 // most @actions toolkit packages have async methods
 const run = async () => {
   try {    
-    const patterns = core.getInput('files').split(',') || ['*.html'];
-    core.info(patterns)
+    const patterns = await core.getInput('files').split(',') || ['*.js'];
+    console.log(core.getInput('files'))
     // const patterns = ["*.js"];
 
     const files = await getFiles(patterns);
