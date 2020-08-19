@@ -1,10 +1,14 @@
 name: 'Content Sentiment Analysis'
-description: 'Wait a designated number of milliseconds'
+description: 'Get an overview of sentiment analysis over the public html files.'
 inputs:
   files:  # glob pattern for files
-    description: 'Glob pattern for files to be checked.'
+    description: 'Glob pattern for files to be checked'
+    default: 'public/**/*.html'
+
+  gcp_key:  # glob pattern for files
+    description: 'Google Cloud Platform API  key for accessing the analyzeSentiment API'
     required: true
-    default: '*.html'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -1,18 +1,21 @@
-name: "units-test"
+name: "sentiment-analysis"
 on:
   pull_request:
   push:
     branches:
       - main
-      - 'releases/*'
+      - 'v*'
 
 jobs:
   # unit tests
-  units:
+  analysis:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: bogdaaamn/copy-sentiment-analysis@v0.0.3
-      with:
-        files: '*.html'
+    - name: "Run sentiment analysis on HTML files"
+      uses: bogdaaamn/copy-sentiment-analysis@v0.5.0
+      with: 
+        gcp_key: ${{ secrets.GCP_KEY }} 
+    - run: |
+        "ls"
 

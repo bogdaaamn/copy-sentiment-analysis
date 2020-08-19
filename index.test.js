@@ -1,23 +1,27 @@
-const wait = require('./wait');
+const index = require('./index');
 const process = require('process');
 const cp = require('child_process');
 const path = require('path');
 
-test('throws invalid number', async () => {
-  await expect(wait('foo')).rejects.toThrow('milliseconds not a number');
+test('throws no files found', async () => {
+  await expect(index.getFiles(['foo'])).rejects.toThrow('No files matching the pattern found. :(');
 });
 
-test('wait 500 ms', async () => {
-  const start = new Date();
-  await wait(500);
-  const end = new Date();
-  var delta = Math.abs(end - start);
-  expect(delta).toBeGreaterThan(450);
+test('gets HTML files', async () => {
+  await expect(Array.isArray(await index.getFiles(['*.js']))).toBe(true);
 });
 
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  process.env['INPUT_MILLISECONDS'] = 500;
-  const ip = path.join(__dirname, 'index.js');
-  console.log(cp.execSync(`node ${ip}`, {env: process.env}).toString());
-})
+// test('wait 500 ms', async () => {
+//   const start = new Date();
+//   await wait(500);
+//   const end = new Date();
+//   var delta = Math.abs(end - start);
+//   expect(delta).toBeGreaterThan(450);
+// });
+
+// // shows how the runner will run a javascript action with env / stdout protocol
+// test('test runs', () => {
+//   process.env['INPUT_MILLISECONDS'] = 500;
+//   const ip = path.join(__dirname, 'index.js');
+//   console.log(cp.execSync(`node ${ip}`, {env: process.env}).toString());
+// })
