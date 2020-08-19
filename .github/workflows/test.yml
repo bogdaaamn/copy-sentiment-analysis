@@ -16,4 +16,6 @@ jobs:
       uses: bogdaaamn/copy-sentiment-analysis@v0.5.0
       with: 
         gcp_key: ${{ secrets.GCP_KEY }} 
+    - run: |
+        "ls"
 
