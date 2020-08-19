@@ -1,11 +1,14 @@
 const core = require('@actions/core');
 const glob = require('@actions/glob');
 
+const os = require('os');
 const fs = require('fs').promises;
 const axios = require('axios');
 const cheerio = require('cheerio'); 
-const { Table } = require('console-table-printer');
 const dotenv = require('dotenv').config();
+
+const { Table } = require('console-table-printer');
+
 
 const getFiles = async patterns => {
   // Create glob patterns. See https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns
@@ -62,9 +65,10 @@ const getSentiment = async (key, text) => {
 }
 
 const truncatePath = async file => {
-  // This is a major improvisation, hope is gonna work pls don't
-  console.log(__dirname);
-  console.log(file);
+  // This is a major improvisation, hope is gonna work pls don't break me
+
+  console.log(os.homedir());
+  console.log(file)
   return await file.replace(`${__dirname}/`, "");
 } 
 
