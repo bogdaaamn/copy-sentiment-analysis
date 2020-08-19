@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const glob = require('@actions/glob');
 
-const os = require('os');
+const path = require('path');
 const fs = require('fs').promises;
 const axios = require('axios');
 const cheerio = require('cheerio'); 
@@ -64,13 +64,10 @@ const getSentiment = async (key, text) => {
   return await res.data;
 }
 
-const truncatePath = async file => {
-  // This is a major improvisation, hope is gonna work pls don't break me
-
-  console.log(os.homedir());
-  console.log(file)
-  return await file.replace(`${__dirname}/`, "");
-} 
+// const truncatePath = async file => {
+//   // This is a major improvisation, hope is gonna work pls don't break me
+//   return await file.replace(`${__dirname}/`, "");
+// } 
 
 const run = async () => {
   try {    
@@ -104,7 +101,7 @@ const run = async () => {
         // Add row to printed table and color code it based on emotion
         // https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
         sentimentTable.addRow({
-          file: await truncatePath(file),
+          file: path.basename(file),
           score: score
         },{
           color: score < -0.5 ? 'red': score > 0.5 ? 'green' : 'white'

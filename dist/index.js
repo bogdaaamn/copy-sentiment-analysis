@@ -6661,7 +6661,7 @@ exports.flatten = function(options) {
 const core = __webpack_require__(470);
 const glob = __webpack_require__(281);
 
-const os = __webpack_require__(87);
+const path = __webpack_require__(622);
 const fs = __webpack_require__(747).promises;
 const axios = __webpack_require__(53);
 const cheerio = __webpack_require__(736); 
@@ -6724,13 +6724,10 @@ const getSentiment = async (key, text) => {
   return await res.data;
 }
 
-const truncatePath = async file => {
-  // This is a major improvisation, hope is gonna work pls don't break me
-
-  console.log(os.homedir());
-  console.log(file)
-  return await file.replace(`${__dirname}/`, "");
-} 
+// const truncatePath = async file => {
+//   // This is a major improvisation, hope is gonna work pls don't break me
+//   return await file.replace(`${__dirname}/`, "");
+// } 
 
 const run = async () => {
   try {    
@@ -6764,7 +6761,7 @@ const run = async () => {
         // Add row to printed table and color code it based on emotion
         // https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
         sentimentTable.addRow({
-          file: await truncatePath(file),
+          file: path.basename(file),
           score: score
         },{
           color: score < -0.5 ? 'red': score > 0.5 ? 'green' : 'white'
