@@ -3573,6 +3573,8 @@ const getSentiment = async (key, text) => {
 
 const truncatePath = async file => {
   // This is a major improvisation, hope is gonna work pls don't
+  console.log(__dirname);
+  console.log(file);
   return await file.replace(`${__dirname}/`, "");
 } 
 
