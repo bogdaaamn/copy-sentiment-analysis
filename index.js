@@ -109,6 +109,7 @@ const run = async () => {
       }
     }
 
+    // Same messy row counter
     insertedTable ? sentimentTable.printTable() : core.info("No content was found in the files. :(");
   } catch (e) {
     core.setFailed(e.message);
