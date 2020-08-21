@@ -1,10 +1,8 @@
 name: "sentiment-analysis"
 on:
-  pull_request:
   push:
     branches:
       - main
-      - 'v*'
 
 jobs:
   test:
@@ -17,14 +15,13 @@ jobs:
       env:
         CI: true
         key: ${{ secrets.GCP_KEY }} 
+
   analysis:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: "Run sentiment analysis on HTML files"
-      uses: bogdaaamn/copy-sentiment-analysis@v0.6.0
+      uses: bogdaaamn/copy-sentiment-analysis@v0.6.1
       with: 
         gcp_key: ${{ secrets.GCP_KEY }} 
-    - run: |
-        "ls"
 
