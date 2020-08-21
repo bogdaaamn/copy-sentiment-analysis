@@ -1,27 +1,48 @@
 const index = require('./index');
-const process = require('process');
-const cp = require('child_process');
-const path = require('path');
+const dotenv = require('dotenv').config();
 
-test('throws no files found', async () => {
-  await expect(index.getFiles(['foo'])).rejects.toThrow('No files matching the pattern found. :(');
+describe('getFiles', () => {
+  test('throws no files found', async () => {
+    await expect(index.getFiles(['foo'])).rejects.toThrow('No files matching the pattern found. :(');
+  });
+
+  test('gets HTML files', async () => {
+    await expect(Array.isArray(await index.getFiles(['public/**/*.html']))).toBe(true);
+  });
 });
 
-test('gets HTML files', async () => {
-  await expect(Array.isArray(await index.getFiles(['*.js']))).toBe(true);
+describe('getText', () => {
+  test('throws no file found', async () => {
+    await expect(index.getText('whatever/doesnt/exist.html')).rejects.toThrow('ENOENT: no such file or directory, open \'whatever/doesnt/exist.html\'');
+  });
+
+  test('gets empty string from empty file', async () => {
+    await expect(await index.getText('public/pizza/empty.html')).toEqual('');
+  });
+
+  test('gets pizza text from file', async () => {
+    await expect(await index.getText('public/pizza/yay-pizza.html')).toEqual('Pizza was the best thing that happened in my life');
+  });
 });
 
-// test('wait 500 ms', async () => {
-//   const start = new Date();
-//   await wait(500);
-//   const end = new Date();
-//   var delta = Math.abs(end - start);
-//   expect(delta).toBeGreaterThan(450);
-// });
+describe('getSentiment', () => {
+  // test('throws wrong API key', async () => {
+  //   await expect(await index.getSentiment('bullshit', 'Pizza was the best thing that happened in my life'))
+  //     .toThrow('Wrong API key!');
+  // });
 
-// // shows how the runner will run a javascript action with env / stdout protocol
-// test('test runs', () => {
-//   process.env['INPUT_MILLISECONDS'] = 500;
-//   const ip = path.join(__dirname, 'index.js');
-//   console.log(cp.execSync(`node ${ip}`, {env: process.env}).toString());
-// })
+  test('get positive sentiment', async () => {
+    const sentiment = await index.getSentiment(process.env.key, 'Pizza was the best thing that happened in my life')
+    await expect(sentiment.documentSentiment.score).toBeGreaterThan(0.5);
+  });
+
+  test('get neutral sentiment', async () => {
+    const sentiment = await index.getSentiment(process.env.key, 'Low-key liking pizza over here')
+    await expect(sentiment.documentSentiment.score).toBeCloseTo(0);
+  });
+
+  test('get negative sentiment', async () => {
+    const sentiment = await index.getSentiment(process.env.key, 'But I swear I absolutely hate the pineapple on it!')
+    await expect(sentiment.documentSentiment.score).toBeLessThan(-0.5);
+  });
+});
