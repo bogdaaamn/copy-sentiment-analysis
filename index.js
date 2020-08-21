@@ -76,6 +76,9 @@ const run = async () => {
     const patterns = core.getInput('files') || 'public/**/*.html';
     const key = core.getInput('gcp_key') || process.env.key;
 
+    // Messy row counter
+    let insertedTable = false;
+
     // Go trough the files
     const files = await getFiles(patterns.split(','));
     for (let file of files) {
@@ -101,10 +104,12 @@ const run = async () => {
         },{
           color: score < -0.5 ? 'red': score > 0.5 ? 'green' : 'white'
         })
+
+        insertedTable = true;
       }
     }
 
-    sentimentTable.printTable();
+    insertedTable ? sentimentTable.printTable() : core.info("No content was found in the files. :(");
   } catch (e) {
     core.setFailed(e.message);
   }
