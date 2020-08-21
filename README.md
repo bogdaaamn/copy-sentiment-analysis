@@ -1,9 +1,7 @@
 # Create a JavaScript Action
 
 <p align="center">
-  <a href="https://github.com/BogDAAAMN/copy-sentiment-analysis/actions"><img alt="javscript-action status" src="https://github.com/BogDAAAMN/copy-sentiment-analysis/workflows/sentiment-analysis/badge.svg"></a>
-  
-  <a href="https://snyk.io/test/github/BogDAAAMN/copy-sentiment-analysis?targetFile=package.json"><img src="https://snyk.io/test/github/BogDAAAMN/copy-sentiment-analysis/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/BogDAAAMN/copy-sentiment-analysis?targetFile=package.json" style="max-width:100%;"></a>
+  <a href="https://github.com/BogDAAAMN/copy-sentiment-analysis/actions"><img alt="javscript-action status" src="https://github.com/BogDAAAMN/copy-sentiment-analysis/workflows/sentiment-analysis/badge.svg"></a> <a href="https://snyk.io/test/github/BogDAAAMN/copy-sentiment-analysis?targetFile=package.json"><img src="https://snyk.io/test/github/BogDAAAMN/copy-sentiment-analysis/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/BogDAAAMN/copy-sentiment-analysis?targetFile=package.json" style="max-width:100%;"></a>
 </p>
 
 Use this template to bootstrap the creation of a JavaScript action.:rocket:
