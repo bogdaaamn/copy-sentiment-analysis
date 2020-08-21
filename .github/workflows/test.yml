@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: "Run sentiment analysis on HTML files"
-      uses: bogdaaamn/copy-sentiment-analysis@v0.6.0
+      uses: bogdaaamn/copy-sentiment-analysis@v0.6.1
       with: 
         gcp_key: ${{ secrets.GCP_KEY }} 
 
