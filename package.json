@@ -30,7 +30,7 @@
     "@actions/glob": "^0.1.0",
     "axios": "^0.19.2",
     "cheerio": "^1.0.0-rc.3",
-    "console-table-printer": "^2.3.12"
+    "console-table-printer": "^2.3.15"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.22.3",
