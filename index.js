@@ -64,11 +64,6 @@ const getSentiment = async (key, text) => {
   return await res.data;
 }
 
-// const truncatePath = async file => {
-//   // This is a major improvisation, hope is gonna work pls don't break me
-//   return await file.replace(`${__dirname}/`, "");
-// } 
-
 const run = async () => {
   try {    
     // Using Table from console-table-printer instead of plain arrays
@@ -117,4 +112,4 @@ const run = async () => {
 
 run();
 
-module.exports = {getFiles, run};
+module.exports = {getFiles, getText, getSentiment};
