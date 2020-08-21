@@ -8,6 +8,8 @@ This GitHub Action runs Sentiment Analysis over the **built** text of your GitHu
 
 ## 🚀 Usage 
 
+![Usage example](https://github.com/BogDAAAMN/copy-sentiment-analysis/blob/v0.6.1/_static/gif/usage.gif)
+
 This is a workflow example of using the Action on plain `.html` files from the `public` folder (by default).
 
 ```yaml
