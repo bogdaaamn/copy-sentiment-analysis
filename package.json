@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/BogDAAAMN/copy-sentiment-analysis#readme",
   "dependencies": {
-    "@actions/core": "^1.1.1",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
     "@actions/glob": "^0.1.0",
     "axios": "^0.20.0",
